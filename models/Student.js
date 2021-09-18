@@ -54,7 +54,13 @@ Student.prototype.createAccount = async function(req,res){
             let salt = bcrypt.genSaltSync(10)
             this.data.password = bcrypt.hashSync(this.data.password, salt)
             studentsCollection.insertOne(this.data)
-            resolve();
+            resolve({       
+                uname:this.data.uname,
+                email:this.data.email,
+                yearofstudy:this.data.yearofstudy,
+                branch:this.data.branch,
+                course:this.data.course
+            });
          } else {
             reject(this.errors)
          }

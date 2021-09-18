@@ -1,41 +1,40 @@
 require('dotenv').config();
 const Student = require('../models/Student')
 const nodemailer = require('nodemailer')
-var stud=null;
 
 exports.home = function(req,res){
     res.render('authpage')
 }
 
 exports.login = function(req,res){
-    console.log(req.body)
     stud = new Student(req.body)
     stud.login().then((data)=>{
-        console.log(data)
-            req.session.data = {
-                uname:data.uname,
-                email:data.email
-            }
-        req.session.save(function(){
-            res.redirect(`/login/${data.uname}`)            
-        });
+        req.session.data = data
+        res.redirect(`/login/${data.uname}`)             
     }).catch((err)=>{
         res.send(err)
     })
 }
 
 exports.dashboard = function(req,res){
-    console.log(res.session)
-    res.render('studentdashboard')
+    console.log(req.params)
+    let data = req.session.data;
+    if(data && data.uname == req.params.uname)
+    {
+        res.render('studentdashboard',{data:data});    
+    }
+    else 
+    {
+        res.redirect('/');
+    }
 }
 
 exports.register = async function(req,res){
-    stud = new Student(req.body)
-    console.log(stud);
+    let stud = new Student(req.body)
+    
     stud.register().then(()=>{
         let code = Math.floor(999+Math.random()*1000)
-        stud.code = code
-
+        
         let transporter = nodemailer.createTransport({
             service:'gmail',
             auth:{
@@ -62,7 +61,8 @@ exports.register = async function(req,res){
             }  
             transporter.close()   
         })        
-
+        req.session.stud = stud;
+        req.session.code = code;
         res.render('register',{codegen:true})
     }).catch((err)=>{
         console.log(err)
@@ -71,25 +71,60 @@ exports.register = async function(req,res){
 }
 
 exports.createaccount = async function(req,res){
-    console.log(req.body)
-    console.log(stud)
-    if(req.body.code == stud.code)
+    let stud = req.session.stud
+    console.log(req.session)
+    if(stud)
     {
-        stud.createAccount().then(()=>{
-            res.send('createaccount checking')
-        }).catch((err)=>{
-            res.send('server issue!')
-        })
+        if(req.body.code == req.session.code)
+        {
+            let studentOne = new Student(stud.data)
+            studentOne.createAccount().then((data)=>{
+                req.session.stud=null
+                req.session.data=data
+                res.redirect(`/login/${data.uname}`)
+            }).catch((err)=>{
+                res.send('server error!')
+            })
+        }
+        else 
+        {
+            res.send('wrong code')
+        }        
     }
-    else 
+    else
     {
-        res.send('wrong code')
+        res.redirect('/')
     }
-    stud=null
 }
 
 exports.loginpage = function(req,res){
     res.render('authpage')
+}
+
+exports.documentupload = function(req,res){
+    let data = req.session.data;
+    console.log(req.session)
+    if(data && data.uname == req.params.uname)
+    {
+        res.render('uploaddocs',{data:data})        
+    }
+    else 
+    {
+        res.send('Invalid route access!')
+    }
+}
+
+exports.trackapplication = function(req,res){
+    let data = req.session.data;
+    console.log(req.session)
+    if(data && data.uname == req.params.uname)
+    {
+        res.render('applicationtracker',{data:data})        
+    }
+    else 
+    {
+        res.send('Invalid route access!')
+    }
 }
 
 exports.registerpage = function(req,res){

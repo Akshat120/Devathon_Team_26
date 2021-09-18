@@ -2,22 +2,19 @@
 <link rel="stylesheet" href="/studentstyle.css">
 </head>
 <body>
-    <!-- As a link -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/login/<%= data.uname %>"><b><%= data.uname %></b></a>
-    </div>
-  </nav>
+  
+  <%- include('includes/studentNavbar.ejs')  %>  
+
 
   <div class="info-container">
     <div class="alert alert-primary info-box" role="alert">
-        A simple primary alert—check it out!
+       <b>A simple primary alert—check it out!</b> 
     </div>
     <div class="alert alert-primary info-box" role="alert">
-        A simple primary alert—check it out!
+      <b>A simple primary alert—check it out!</b> 
     </div>
     <div class="alert alert-primary info-box" role="alert">
-        A simple primary alert—check it out!
+      <b>A simple primary alert—check it out!</b> 
     </div>
   </div>
 </body> 
