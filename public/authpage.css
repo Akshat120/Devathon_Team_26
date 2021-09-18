@@ -1,0 +1,67 @@
+.header{
+    text-align: center;
+}
+.form-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.options{
+    background-color:rgb(151, 208, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+form{
+    width:400px;
+    background-color: aliceblue;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:3px solid rgb(151, 208, 255);
+    border-top:none;
+}
+.form-field{
+    align-self: center;
+    margin-top: 8px;
+}
+.inner-option{
+    font-size: 24px;
+    padding: 10px;
+}
+input{
+    /* align-items: ; */
+    font-size: 20px;
+    border: none;
+    outline: none;
+    padding:2px;
+}
+.useremail1{
+    border:2px solid #666666;
+}
+.useremail2{
+    border:2px solid #666666;
+}
+.password{
+    border:2px solid #666666;
+}
+.register{
+    text-align: center;
+    background-color: rgb(151, 208, 255);
+    width: 50%;
+    border-right: 3px solid rgb(183, 223, 255);
+    cursor: pointer;
+}
+.login{
+    text-align: center;
+    background-color: rgb(151, 208, 255);
+    width:50%;
+    cursor: pointer;
+}
+.register:hover{
+    background-color: rgb(55, 155, 236);
+}
+.login:hover{
+    background-color: rgb(55, 155, 236);
+}

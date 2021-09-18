@@ -1,0 +1,38 @@
+<%- include('includes/header.ejs') %>
+<link rel="stylesheet" href="/authpage.css">
+</head>
+<body>
+    <div class="header">
+       <h2 class="display-4 align-center">Student Scholarship</h2>
+    </div>
+  
+  <div class="form-container">
+    <div>
+        <div class="options">
+            <div class="inner-option register">
+               <a href="registerpage">Register</a> 
+            </div>
+            <div class="inner-option login">
+                <a href="/">Login</a>
+            </div>
+        </div>
+        <form action="/register" method="POST">
+            <div class="form-field">    
+                <input class="useremail1" type="text" id="useremail" placeholder="name_regno" size="12px">
+                <input class="useremail2" type="text" value="@student.nitw.ac.in" disabled>      
+            </div>
+            <div class="form-field">
+                <input class="password" type="password" id="userpassword" placeholder="password">
+            </div>
+            <div class="form-field">
+                <input class="password" type="password" id="userpassword" placeholder="confirm password">
+            </div>
+            <div class="form-field">
+                <button class="btn btn-primary ">Register</button>
+            </div>
+        </form>
+    </div>
+  </div>
+
+</body>
+<%- include('includes/footer.ejs') %>
