@@ -127,5 +127,5 @@ exports.authenticate_admin = function(req, res) {
 }
 
 exports.registerrr_admin = function(req, res) {
-    res.render('register_admin')
+    res.render('register_admin', { codegen: false })
 }
