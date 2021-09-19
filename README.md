@@ -1,5 +1,8 @@
 ## Devathon_Team_26
 
+### (use node db.js to run the application)
+### (do install all the npm dependencies before before running the server)
+
 #### Scholarship Portal :
 #### Intro : There are endless scholarships coming out throughout the Academic Year.
 #### Web & Software Development Cell, NIT Warangal 2
