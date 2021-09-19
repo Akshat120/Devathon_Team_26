@@ -131,7 +131,14 @@ exports.registerpage = function(req,res){
     res.render('register',{codegen:false})
 }
 
+//admin
+exports.authenticate_admin = function(req, res) {
+    res.render('authpage_admin')
+}
 
+exports.registerrr_admin = function(req, res) {
+    res.render('register_admin')
+}
 
 
 
