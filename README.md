@@ -1,6 +1,6 @@
 ## Devathon_Team_26
 
-### (use node db.js to run the application)
+### (use 'node db.js' without quotes to run the application)
 ### (do install all the npm dependencies before before running the server)
 
 #### Scholarship Portal :
