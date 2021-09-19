@@ -13,6 +13,11 @@ router.post('/register',studentController.register)
 router.post('/createaccount',studentController.createaccount)
 
 
+//admin
+router.get('/authpage_admin', studentController.authenticate_admin)
+router.get('/register_admin', studentController.registerrr_admin)
+
+
 module.exports = router;
 
 
